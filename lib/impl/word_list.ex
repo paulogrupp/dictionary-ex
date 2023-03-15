@@ -21,7 +21,7 @@ defmodule Dictionary.Impl.WordList do
     |> Enum.random()
   end
 
-  defp filter_by_length(words, length) do
+  def filter_by_length(words, length) do
     Enum.filter(words, fn word -> String.length(word) == length end)
   end
 end

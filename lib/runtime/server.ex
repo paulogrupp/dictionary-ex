@@ -17,4 +17,13 @@ defmodule Dictionary.Runtime.Server do
   def random_word(word_length) do
     Agent.get(@me, fn word_list -> WordList.random_word(word_list, word_length) end)
   end
+
+  def word_list(word_length) do
+    Agent.get(@me, & &1)
+    |> WordList.filter_by_length(word_length)
+  end
+
+  def word_list() do
+    Agent.get(@me, & &1)
+  end
 end
