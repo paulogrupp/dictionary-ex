@@ -14,4 +14,14 @@ defmodule Dictionary.Impl.WordList do
     word_list
     |> Enum.random()
   end
+
+  def random_word(word_list, word_length) do
+    word_list
+    |> filter_by_length(word_length)
+    |> Enum.random()
+  end
+
+  defp filter_by_length(words, length) do
+    Enum.filter(words, fn word -> String.length(word) == length end)
+  end
 end
